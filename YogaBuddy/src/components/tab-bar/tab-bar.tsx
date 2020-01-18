@@ -20,9 +20,11 @@ function TabBar({
     const TabBarStyles = useDynamicStyleSheet(DynamicTabBarStyles);
 
     function renderTabs() {
-        function renderTab(route: NavigationRoute, index: number, big: boolean) {
+        const middleIdx = Math.floor((routes.length - 1) / 2);
+        return routes.map((route, index) => {
             const activeRoute = index == activeRouteIndex;
             const tintColor = activeRoute ? activeTintColor : inactiveTintColor;
+            const big = index == middleIdx;
             return (
                 <Tab
                     key={index}
@@ -38,9 +40,7 @@ function TabBar({
                     }}
                 />
             );
-        }
-        const middleIdx = Math.floor((routes.length - 1) / 2);
-        return routes.map((route, index) => renderTab(route, index, index == middleIdx));
+        });
     }
 
     return (

@@ -9,7 +9,7 @@ type TabProps = {
     onLongPress: () => void;
     accessibilityLabel?: string;
     icon: React.ReactNode;
-    tintColor?: string | { light: string; dark: string };
+    tintColor?: string;
     labelText?: string | ((scene: {
         focused: boolean;
         tintColor?: string | undefined;
