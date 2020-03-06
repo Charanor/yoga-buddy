@@ -1,9 +1,16 @@
 {
     "quote-of-the-day": "Quote of the Day",
 
+    "screens": {
+        "poses": {
+            "find-poses": "Find Poses"
+        }
+    },
+
     "pose-link": {
         "pose-of-the-day": "Pose of the Day",
-        "recent-poses": "Recent Poses"
+        "recent-poses": "Recent Poses",
+        "favorite-poses": "Favorite Poses"
     },
 
     "test": {

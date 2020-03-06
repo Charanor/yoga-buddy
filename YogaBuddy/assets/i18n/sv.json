@@ -1,9 +1,16 @@
 {
     "quote-of-the-day": "Dagens Språkord",
 
+    "screens": {
+        "poses": {
+            "find-poses": "Hitta Positioner"
+        }
+    },
+
     "pose-link": {
         "pose-of-the-day": "Dagens Position",
-        "recent-poses": "recent-poses"
+        "recent-poses": "recent-poses",
+        "favorite-poses": "Favoritpositioner"
     },
 
     "test": {
