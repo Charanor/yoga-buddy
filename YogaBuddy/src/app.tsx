@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import MainTabs from "./tabs";
 
+import { init as initI18n } from "./i18n";
+
 function App() {
+    useEffect(initI18n, []);
+
     return (
         <NavigationContainer>
             <MainTabs />
