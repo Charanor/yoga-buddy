@@ -7,7 +7,7 @@ const DynamicPoseLinkStyles = new DynamicStyleSheet({
         flexDirection: "row",
         alignItems: "center",
         height: 80,
-        width: "80%",
+        width: 280,
         backgroundColor: Colors.primary.light,
         borderRadius: 40,
         paddingVertical: 10,
@@ -23,6 +23,9 @@ const DynamicPoseLinkStyles = new DynamicStyleSheet({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
     },
+    wrapperSmall: {
+        width: 180
+    },
     image: {
         flex: 1,
         width: "30%",
@@ -31,9 +34,9 @@ const DynamicPoseLinkStyles = new DynamicStyleSheet({
     nameText: {
         fontSize: 14,
     },
-    nameTextLarge: {
+    nameTextSmall: {
         flex: 2,
-        fontSize: 28
+        fontSize: 22
     },
     descriptionText: {
         flex: 1,
@@ -41,6 +44,9 @@ const DynamicPoseLinkStyles = new DynamicStyleSheet({
     },
     nameDescWrapper: {
         flex: 2,
+    },
+    collectionPadding: {
+        paddingBottom: 5
     }
 });
 

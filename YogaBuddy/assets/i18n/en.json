@@ -1,4 +1,11 @@
 {
+    "quote-of-the-day": "Quote of the Day",
+
+    "pose-link": {
+        "pose-of-the-day": "Pose of the Day",
+        "recent-poses": "Recent Poses"
+    },
+
     "test": {
         "name": "[EN] Test",
         "description": "[EN] Lorem ipsum dolor sit amet, consectetur adipiscing elit."

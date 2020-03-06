@@ -10,6 +10,8 @@ const SUPPORTED_LANGUAGES: { [tag: string]: object } = {
 const FALLBACK = { languageTag: "en", isRTL: false };
 
 function init() {
+    console.debug("Initializing i18n...");
+
     const { languageTag, isRTL } =
         RNLocalize.findBestAvailableLanguage(Object.keys(SUPPORTED_LANGUAGES)) ||
         FALLBACK;
@@ -20,12 +22,14 @@ function init() {
     // set i18n-js config
     I18n.translations = { [languageTag]: SUPPORTED_LANGUAGES[languageTag] };
     I18n.locale = languageTag;
-
     I18n.HAS_INIT = true;
 }
 
 function translate(key: Scope, opt?: TranslateOptions): string {
-    if (!I18n.HAS_INIT) return "<error: initialize i18n before using>";
+    if (!I18n.HAS_INIT) {
+        console.warn("Attemt to translate before i18n has intialized.");
+        return key.toString();
+    }
     return I18n.translate(key, opt);
 }
 

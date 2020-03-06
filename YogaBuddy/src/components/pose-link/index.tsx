@@ -3,6 +3,7 @@ import { ImageSourcePropType, ViewStyle } from "react-native";
 
 import SmallPoseLink from "./small";
 import LargePoseLink from "./large";
+import PoseLinkCollection from "./collection";
 
 type PoseLinkDelegateProps = {
     small?: boolean;
@@ -15,4 +16,6 @@ type PoseLinkDelegateProps = {
 function PoseLink({ small, ...props }: PoseLinkDelegateProps) {
     return small ? <SmallPoseLink {...props} /> : <LargePoseLink {...props} />;
 }
+
 export default PoseLink;
+export { PoseLinkCollection, PoseLinkDelegateProps };

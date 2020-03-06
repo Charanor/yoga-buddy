@@ -1,4 +1,11 @@
 {
+    "quote-of-the-day": "Dagens Språkord",
+
+    "pose-link": {
+        "pose-of-the-day": "Dagens Position",
+        "recent-poses": "recent-poses"
+    },
+
     "test": {
         "name": "[SV] Test",
         "description": "[SV] Lorem ipsum dolor sit amet, consectetur adipiscing elit."

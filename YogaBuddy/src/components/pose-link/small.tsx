@@ -13,10 +13,11 @@ type SmallPoseLinkProps = {
 function SmallPoseLink({ name, imageURL, style }: SmallPoseLinkProps) {
     const PoseLinkStyles = useDynamicStyleSheet(DynamicPoseLinkStyles);
     return (
-        <TouchableOpacity style={[PoseLinkStyles.wrapper, style]}>
-            <Image source={imageURL} style={PoseLinkStyles.image} />
-            <Text style={PoseLinkStyles.nameTextLarge}>{name}</Text>
+        <TouchableOpacity style={[PoseLinkStyles.wrapper, PoseLinkStyles.wrapperSmall, style]}>
+            <Image source={imageURL} style={PoseLinkStyles.image} resizeMode="contain" />
+            <Text style={PoseLinkStyles.nameTextSmall}>{name}</Text>
         </TouchableOpacity>
     );
 }
 export default SmallPoseLink;
+export { SmallPoseLinkProps };

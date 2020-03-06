@@ -23,4 +23,6 @@ function LargePoseLink({ name, description, imageURL, style }: LargePoseLinkProp
         </TouchableOpacity>
     );
 }
+
 export default LargePoseLink;
+export { LargePoseLinkProps };
