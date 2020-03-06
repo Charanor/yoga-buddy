@@ -1,5 +1,12 @@
-import { createAppContainer } from "react-navigation";
-import MainTabs from "./main-tabs";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import MainTabs from "./tabs";
 
-const App = createAppContainer(MainTabs);
+function App() {
+    return (
+        <NavigationContainer>
+            <MainTabs />
+        </NavigationContainer>
+    );
+}
 export default App;

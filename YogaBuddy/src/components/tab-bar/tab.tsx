@@ -10,11 +10,10 @@ type TabProps = {
     accessibilityLabel?: string;
     icon: React.ReactNode;
     tintColor?: string;
-    labelText?: string | ((scene: {
+    labelText?: string | ((props: {
         focused: boolean;
-        tintColor?: string | undefined;
-        orientation?: "horizontal" | "vertical" | undefined;
-    }) => string | undefined);
+        color: string;
+    }) => React.ReactNode);
     big?: boolean;
 };
 

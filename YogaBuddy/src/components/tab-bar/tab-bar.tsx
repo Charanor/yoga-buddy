@@ -1,19 +1,15 @@
 import React from "react";
 import { View } from "react-native";
-import { NavigationRoute } from "react-navigation";
-import { BottomTabBarProps } from "react-navigation-tabs";
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { useDynamicStyleSheet } from "react-native-dark-mode";
 
 import { DynamicTabBarStyles } from "../../styles";
 import Tab from "./tab";
 
 function TabBar({
-    onTabPress,
-    onTabLongPress,
-    getAccessibilityLabel,
-    renderIcon,
-    getLabelText,
-    navigation: { state: { routes, index: activeRouteIndex } },
+    navigation,
+    state: { routes, index: stateIndex },
+    descriptors,
     activeTintColor,
     inactiveTintColor
 }: BottomTabBarProps) {
@@ -22,18 +18,45 @@ function TabBar({
     function renderTabs() {
         const middleIdx = Math.floor((routes.length - 1) / 2);
         return routes.map((route, index) => {
-            const activeRoute = index == activeRouteIndex;
+            const { options: {
+                tabBarLabel,
+                title,
+                tabBarAccessibilityLabel,
+                tabBarIcon,
+            } } = descriptors[route.key];
+            const labelText = tabBarLabel || title || route.name;
+            const activeRoute = index == stateIndex;
             const tintColor = activeRoute ? activeTintColor : inactiveTintColor;
             const big = index == middleIdx;
+
+            function onPress() {
+                const event = navigation.emit({
+                    type: "tabPress",
+                    target: route.key,
+                    canPreventDefault: true
+                });
+
+                if (!activeRoute && !event.defaultPrevented) {
+                    navigation.navigate(route.name);
+                }
+            }
+
+            function onLongPress() {
+                navigation.emit({
+                    type: 'tabLongPress',
+                    target: route.key,
+                });
+            }
+
             return (
                 <Tab
                     key={index}
-                    onPress={() => onTabPress({ route })}
-                    onLongPress={() => onTabLongPress({ route })}
-                    accessibilityLabel={getAccessibilityLabel({ route })}
-                    icon={renderIcon({ route, focused: activeRoute, tintColor })}
-                    labelText={getLabelText({ route })}
+                    accessibilityLabel={tabBarAccessibilityLabel}
+                    icon={tabBarIcon?.({ focused: activeRoute, color: tintColor, size: 14 })}
                     {...{
+                        onPress,
+                        onLongPress,
+                        labelText,
                         activeRoute,
                         tintColor,
                         big
