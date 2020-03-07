@@ -9,9 +9,10 @@ type PoseLinkCollectionProps = {
     title: string;
     poseLinks: PoseLinkDelegateProps[];
     style?: ViewStyle;
+    footerComponent?: React.ReactNode;
 };
 
-function PoseLinkCollection({ title, poseLinks, style }: PoseLinkCollectionProps) {
+function PoseLinkCollection({ title, poseLinks, style, footerComponent }: PoseLinkCollectionProps) {
     const PoseLinkStyles = useDynamicStyleSheet(DynamicPoseLinkStyles);
 
     function renderPoseLink(props: PoseLinkDelegateProps, index: number) {
@@ -44,6 +45,7 @@ function PoseLinkCollection({ title, poseLinks, style }: PoseLinkCollectionProps
                             (
                                 <ScrollView horizontal contentContainerStyle={PoseLinkStyles.collectionPadding}>
                                     {poseLinks.map(renderPoseLink)}
+                                    {footerComponent}
                                 </ScrollView>
                             )
                     )

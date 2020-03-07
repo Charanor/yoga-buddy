@@ -7,7 +7,7 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 import TabBar from "../components/tab-bar";
 import { DynamicTabBarStyles } from "../styles";
 import Home from "./home";
-import Poses from "./poses";
+import Poses, { PosesRoutes } from "./poses";
 
 enum Routes {
     Home = "Home",
@@ -55,7 +55,9 @@ function MainTabs() {
             <Screen
                 name={Routes.Poses}
                 component={Poses}
-                options={{ tabBarIcon: ({ color }) => <TabIonIcon name="ios-body" tintColor={color} /> }}
+                options={{
+                    tabBarIcon: ({ color }) => <TabIonIcon name="ios-body" tintColor={color} />,
+                }}
             />
             <Screen
                 name={Routes.Profile}

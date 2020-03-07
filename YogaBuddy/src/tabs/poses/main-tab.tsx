@@ -2,18 +2,15 @@ import React from "react";
 import { View, Platform, TouchableNativeFeedback, TouchableHighlight, Text } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
 import { useDynamicStyleSheet } from "react-native-dark-mode";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import WithTitle from "../../components/with-title";
 import PoseLink, { PoseLinkCollection } from "../../components/pose-link";
-import { translate as $ } from "../../i18n";
-import DynamicStyles, { DynamicPosesTabStyles } from "../../styles";
-import { PosesRoutes } from ".";
+import Touchable from "../../components/touchable";
 
-const Touchable = Platform.select({
-    android: TouchableNativeFeedback,
-    ios: TouchableHighlight
-});
+import DynamicStyles, { DynamicPosesTabStyles, Colors } from "../../styles";
+import { translate as $ } from "../../i18n";
+import { PosesRoutes } from ".";
 
 type PosesProps = {
     navigation: NavigationProp<any, any>;
@@ -22,6 +19,10 @@ type PosesProps = {
 function Poses({ navigation }: PosesProps) {
     const Styles = useDynamicStyleSheet(DynamicStyles);
     const PosesTabStyles = useDynamicStyleSheet(DynamicPosesTabStyles);
+
+    function showAllFavorites() {
+
+    }
 
     return (
         <View style={Styles.content}>
@@ -78,12 +79,19 @@ function Poses({ navigation }: PosesProps) {
                             small: true
                         }
                     ]}
+                    footerComponent={
+                        <Touchable onPress={showAllFavorites}>
+                            <View style={PosesTabStyles.showAllPosesButton}>
+                                <Icon name="chevron-double-right" style={{ fontSize: 34 }} />
+                            </View>
+                        </Touchable>
+                    }
                 />
             </View>
 
             <Touchable onPress={() => navigation.navigate(PosesRoutes.FindPoses)}>
                 <View style={PosesTabStyles.findPosesButton}>
-                    <Icon name="search" style={PosesTabStyles.findPoseButtonIcon} />
+                    <Icon name="magnify" style={PosesTabStyles.findPoseButtonIcon} />
                     <Text style={PosesTabStyles.findPosesButtonText}>{$("screens.poses.find-poses")}</Text>
                 </View>
             </Touchable>

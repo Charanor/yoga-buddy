@@ -1,6 +1,8 @@
 import { DynamicStyleSheet } from "react-native-dark-mode";
 import Colors from "./colors";
 
+const POSE_LINK_HEIGHT = 80;
+
 const DynamicPoseLinkStyles = new DynamicStyleSheet({
     wrapper: {
         overflow: "hidden",
@@ -52,3 +54,4 @@ const DynamicPoseLinkStyles = new DynamicStyleSheet({
 
 
 export default DynamicPoseLinkStyles;
+export { POSE_LINK_HEIGHT };
