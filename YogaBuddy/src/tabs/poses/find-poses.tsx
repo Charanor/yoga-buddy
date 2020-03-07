@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, TextInput, Text } from "react-native";
+import { View, TextInput, Text, FlatList, ListRenderItemInfo } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
 import { useDynamicStyleSheet } from "react-native-dark-mode";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import Touchable from "../../components/touchable";
 import WithTitle from "../../components/with-title";
+import PoseLink, { PoseLinkDelegateProps } from "../../components/pose-link";
 import DynamicStyles, { DynamicPosesTabStyles } from "../../styles";
 
 type FindPosesProps = {
@@ -38,6 +39,19 @@ function FindPoses({ navigation }: FindPosesProps) {
         return filterOpen ? "chevron-up" : "chevron-down";
     }
 
+    function getShadow() {
+        return filterOpen ? {
+            elevation: 3,
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 1,
+            },
+            shadowOpacity: 0.22,
+            shadowRadius: 2.22,
+        } : {};
+    }
+
     return (
         <View style={Styles.content}>
             <View style={PosesStyles.filterWrapper}>
@@ -45,16 +59,23 @@ function FindPoses({ navigation }: FindPosesProps) {
                     <Icon name="magnify" style={PosesStyles.filterIcon} />
                     <TextInput placeholder="Text filter..." style={PosesStyles.filterTextInput} />
                 </View>
-                <View style={[PosesStyles.filterOptions, { height: filterOptionsHeight }]}>
+                <View style={[
+                    PosesStyles.filterOptions,
+                    {
+                        height: filterOptionsHeight,
+                        backgroundColor: filterOpen ? "white" : "transparent",
+                        ...getShadow()
+                    }
+                ]}>
                     <WithTitle
                         title="Good for my..."
-                        titleStyle={{fontSize: 18}}
+                        titleStyle={{ fontSize: 18 }}
                     >
                         <Text>Back, neck, shoulders</Text>
                     </WithTitle>
                     <WithTitle
                         title="I am / have..."
-                        titleStyle={{fontSize: 18}}
+                        titleStyle={{ fontSize: 18 }}
                     >
                         <Text>Back problems, pregnant</Text>
                     </WithTitle>
@@ -65,6 +86,31 @@ function FindPoses({ navigation }: FindPosesProps) {
                     </View>
                 </Touchable>
             </View>
+            <FlatList
+                data={[
+                    {
+                        name: "Test",
+                        description: "Test description",
+                        imageURL: require("../../../assets/google.jpg"),
+                    },
+                    {
+                        name: "Test",
+                        description: "Test description",
+                        imageURL: require("../../../assets/google.jpg"),
+                    },
+                    {
+                        name: "Test",
+                        description: "Test description",
+                        imageURL: require("../../../assets/google.jpg"),
+                    },
+                ]}
+                renderItem={({ item }) => <PoseLink {...item} />}
+                keyExtractor={(item, index) => item.name + index}
+                ItemSeparatorComponent={() => <View style={PosesStyles.listSeparator} />}
+                style={PosesStyles.list}
+                contentContainerStyle={PosesStyles.listContent}
+                showsVerticalScrollIndicator
+            />
         </View>
     );
 }

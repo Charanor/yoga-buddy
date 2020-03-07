@@ -62,13 +62,18 @@ const PosesTabStyles = new DynamicStyleSheet({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        borderRadius: 25
+        borderRadius: 25,
+        zIndex: 1
     },
     filterOptions: {
+        width: "90%",
         alignSelf: "center",
         flexDirection: "column",
         overflow: "hidden",
-        width: "90%"
+        paddingHorizontal: 10,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
+        zIndex: 0
     },
     filterIcon: {
         fontSize: 34,
@@ -91,6 +96,16 @@ const PosesTabStyles = new DynamicStyleSheet({
     openFilterIcon: {
         fontSize: 22,
         color: Colors.secondary.text
+    },
+    listSeparator: {
+        height: 10
+    },
+    list: {
+        marginTop: 10,
+    },
+    listContent: {
+        alignItems: "center",
+        paddingBottom: 10
     }
 });
 
